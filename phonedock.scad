@@ -3,13 +3,15 @@ phoneWidth = 80;
 phoneHeight = 155;
 dockThickness = 1.5;
 dockHeight = phoneHeight - phoneFrontCameraAreaHeight;
+padding = 4;
 dockBandWidth = 5;
-dockWidth = phoneWidth + (2 * dockBandWidth);
+dockWidth = phoneWidth + padding + (2 * dockBandWidth);
 dockBaseLipWidth = dockBandWidth * 1.5;
+dockBaseFrontLipWidth = dockBandWidth * 1.3;
 dockBaseWidth = 2 * dockBandWidth;
 usbOpeningWidth = 30;
 usbOpeningStart = (dockWidth - usbOpeningWidth) / 2;
-dockStrapGap = phoneWidth + dockBandWidth;
+dockStrapGap = phoneWidth + padding + dockBandWidth;
 dockSupportHeight = 110;
 phoneSupportHeight = phoneHeight - dockSupportHeight + dockThickness;
 
@@ -45,7 +47,8 @@ color("orange") {
     difference() {
         union() {
             translate([0, 0, dockThickness]) dockBase(width=dockWidth);
-            rotate([0, 0, 90]) translate([0, -dockBaseLipWidth, dockBaseWidth + dockThickness]) singleStrap(dockWidth, width = dockBaseLipWidth);
+            //front lip
+            rotate([0, 0, 90]) translate([0, -dockBaseFrontLipWidth, dockBaseWidth + dockThickness]) singleStrap(dockWidth, width = dockBaseFrontLipWidth);
         }
         translate([0, 0, dockThickness]) translate([-dockThickness, usbOpeningStart, 0]) usbOpening();
     }
