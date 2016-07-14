@@ -12,7 +12,7 @@ dockBaseWidth = 2 * dockBandWidth;
 usbOpeningWidth = 30;
 usbOpeningStart = (dockWidth - usbOpeningWidth) / 2;
 dockStrapGap = phoneWidth + padding + dockBandWidth;
-dockSupportHeight = 110;
+dockSupportHeight = 115;
 phoneSupportHeight = phoneHeight - dockSupportHeight + dockThickness;
 
 module singleStrap(length, width = dockBandWidth, thickness = dockThickness) {
@@ -37,9 +37,15 @@ module phoneHook() {
     dockBase(dockBandWidth);
 }
 
-singleStrap(dockHeight);
-translate([0, dockStrapGap, 0]) singleStrap(dockHeight);
-rotate([0, 0, 90]) translate([0, -dockSupportHeight, 0]) singleStrap(dockWidth);
+//vertical straps
+color("green") {
+    //left strap
+    singleStrap(dockHeight);
+    //right strap
+    translate([0, dockStrapGap, 0]) singleStrap(dockHeight);
+}
+//horizonal - phone support strap
+color("Lime") rotate([0, 0, 90]) translate([0, -dockSupportHeight, 0]) singleStrap(dockWidth);
 
 //base
 color("orange") {
